@@ -3,6 +3,7 @@ import useFormWithValidation from "../../hooks/useFormWithValidation";
 import {
   passwordValidationErrorMessage,
   emailValidationErrorMessage,
+  siteName,
 } from "../../utils/constants";
 
 export default function AuthPage(props) {
@@ -20,7 +21,7 @@ export default function AuthPage(props) {
       <section className="auth-page">
         <div className="auth-page__popup">
           <form className="auth-page__form" onSubmit={handleSubmit} noValidate>
-            <h1 className="auth-page__form-title">Simple Hotel Check</h1>
+            <h1 className="auth-page__form-title">{siteName}</h1>
             <div className="auth-page__input-container">
               <h3
                 className={`auth-page__input-title ${
