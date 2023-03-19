@@ -3,6 +3,7 @@ import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
 // импорты компонентов
 import AuthPage from "../AuthPage/AuthPage";
+import MainPage from "../MainPage/MainPage";
 
 export default function App() {
   const history = useHistory();
@@ -18,7 +19,7 @@ export default function App() {
           <AuthPage onLogin={authorization} />
         </Route>
         <Route exact path="/hotels">
-          {" "}
+          <MainPage />
         </Route>
         <Route path="/">
           <Redirect to="/sign-in" />
