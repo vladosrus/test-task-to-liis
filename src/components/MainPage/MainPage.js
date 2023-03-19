@@ -5,7 +5,7 @@ import "./MainPage.css";
 export default function MainPage(props) {
   return (
     <>
-      <Header />
+      <Header onLogout={props.onLogout} />
       <main>
         <HotelsSection />
       </main>
