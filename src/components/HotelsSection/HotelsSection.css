@@ -1,0 +1,33 @@
+.hotels {
+  height: 932px;
+}
+
+.hotels__grid-container {
+  max-width: 1048px;
+  min-height: 906px;
+  margin: 0px 184px 0px auto;
+  display: grid;
+  grid-template-columns: 360px 664px;
+  grid-template-rows: 410px 472px;
+  grid-template-areas:
+    "a c c"
+    "b c c";
+  gap: 24px;
+}
+
+.hotels__grid-item {
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
+}
+
+.hotels__grid-item:nth-child(1) {
+  padding: 32px;
+  grid-area: a;
+}
+.hotels__grid-item:nth-child(2) {
+  grid-area: b;
+}
+.hotels__grid-item:nth-child(3) {
+  grid-area: c;
+}
