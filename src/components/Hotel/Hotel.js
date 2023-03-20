@@ -1,3 +1,4 @@
+import { daysWrite } from "../../utils/constants";
 import "./Hotel.css";
 
 export default function Hotel(props) {
@@ -6,25 +7,47 @@ export default function Hotel(props) {
       <div className="hotel__info">
         <div className="hotel__img" />
         <div className="hotel__info-container">
-          <h3 className="hotel__name">Moscow Marriott Grand Hotel</h3>
+          <h3 className="hotel__name">{props.hotelName}</h3>
           <div className="hotel__date-container">
-            <p className="hotel__date">7 июля 2020</p>
+            <p className="hotel__date">{props.date}</p>
             <div className="hotel__dash" />
-            <p className="hotel__date">1 день</p>
+            <p className="hotel__date">
+              {props.days} {daysWrite[props.days]}
+            </p>
           </div>
           <ul className="hotel__stars-list">
-            <li className="hotel__star hotel__star_active" />
-            <li className="hotel__star hotel__star_active" />
-            <li className="hotel__star hotel__star_active" />
-            <li className="hotel__star" />
-            <li className="hotel__star" />
+            <li
+              className={`hotel__star ${
+                props.stars >= 1 && "hotel__star_active"
+              }`}
+            />
+            <li
+              className={`hotel__star ${
+                props.stars >= 2 && "hotel__star_active"
+              }`}
+            />
+            <li
+              className={`hotel__star ${
+                props.stars >= 3 && "hotel__star_active"
+              }`}
+            />
+            <li
+              className={`hotel__star ${
+                props.stars >= 4 && "hotel__star_active"
+              }`}
+            />
+            <li
+              className={`hotel__star ${
+                props.stars === 5 && "hotel__star_active"
+              }`}
+            />
           </ul>
         </div>
       </div>
       <div className="hotel__like-button" />
       <div className="hotel__price-container">
         <p className="hotel__price-text">Price:</p>
-        <span className="hotel__price-count">23 924 ₽</span>
+        <span className="hotel__price-count">{props.price} ₽</span>
       </div>
     </article>
   );

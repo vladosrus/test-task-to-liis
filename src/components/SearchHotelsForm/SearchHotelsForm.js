@@ -1,20 +1,17 @@
-import { useEffect } from "react";
-import useFormWithValidation from "../../hooks/useFormWithValidation";
-import { getTodayData } from "../../utils/constants";
 import "./SearchHotelsForm.css";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import { getTodayDate } from "../../utils/constants";
 
 export default function SearchHotelsForm(props) {
   const { values, handleChange } = useFormWithValidation({});
 
-  useEffect(() => {
-    values.location = "Москва";
-    values.date = getTodayData();
-    values.days = 1;
-  }, [values]);
-
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.onSearchHotels(values);
+    props.onSearchHotels(
+      values.location ? values.location : "Москва",
+      values.date ? values.date : getTodayDate(),
+      values.days ? values.days : 1
+    );
   }
 
   return (
@@ -26,7 +23,8 @@ export default function SearchHotelsForm(props) {
           className="search-form__input"
           type="text"
           required
-          value={values.location || "Москва"}
+          value={values.location}
+          defaultValue={"Москва"}
           onChange={handleChange}
         />
       </div>
@@ -38,6 +36,7 @@ export default function SearchHotelsForm(props) {
           type="date"
           required
           value={values.date}
+          defaultValue={getTodayDate()}
           onChange={handleChange}
         />
       </div>
@@ -49,6 +48,8 @@ export default function SearchHotelsForm(props) {
           type="number"
           required
           value={values.days}
+          defaultValue={1}
+          min={1}
           onChange={handleChange}
         />
       </div>

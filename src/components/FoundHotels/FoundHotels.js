@@ -3,6 +3,7 @@ import forest1 from "../../images/forest1.jpg";
 import forest2 from "../../images/forest2.jpg";
 import forest3 from "../../images/forest3.jpg";
 import Hotel from "../Hotel/Hotel";
+import { hotelsWrite } from "../../utils/constants";
 
 export default function FoundHotels(props) {
   const convertDate = (date) =>
@@ -27,37 +28,42 @@ export default function FoundHotels(props) {
         <p className="found-hotels__date">{convertDate(props.searchingDate)}</p>
       </div>
       <div className="found-hotels__photo-container">
-        <img src={forest1} className="found-hotels__photo" />
-        <img src={forest2} className="found-hotels__photo" />
-        <img src={forest3} className="found-hotels__photo" />
-        <img src={forest1} className="found-hotels__photo" />
-        <img src={forest2} className="found-hotels__photo" />
-        <img src={forest3} className="found-hotels__photo" />
+        <img src={forest1} alt="Лес" className="found-hotels__photo" />
+        <img src={forest2} alt="Лес" className="found-hotels__photo" />
+        <img src={forest3} alt="Лес" className="found-hotels__photo" />
+        <img src={forest1} alt="Лес" className="found-hotels__photo" />
+        <img src={forest2} alt="Лес" className="found-hotels__photo" />
+        <img src={forest3} alt="Лес" className="found-hotels__photo" />
       </div>
       <p className="found-hotels__favourites-text">
         Добавлено в Избранное:
         <span className="found-hotels__favourites-count">
-          {/* количество отелей */}3
+          {props.selectedHotels.length}
         </span>
-        отеля
+        {hotelsWrite[props.selectedHotels.length]}
       </p>
-      <div className="found-hotels__hotels-container">
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-        <Hotel />
-      </div>
+      <ul className="found-hotels__hotels-list">
+        {props.hotelsToShow?.map((newHotel) => {
+          return (
+            <li
+              className="found-hotels__hotels-list-item"
+              key={newHotel.hotelId}
+            >
+              <Hotel
+                setSelectedHotels={props.setSelectedHotels}
+                hotel={newHotel}
+                hotelName={newHotel.hotelName}
+                stars={newHotel.stars}
+                price={newHotel.priceAvg}
+                date={convertDate(props.searchingDate)}
+                days={props.searchingDays}
+                onHotelLike={props.onHotelLike}
+              />
+            </li>
+          );
+        })}
+      </ul>
+      {props.hotelsToShow.length === 0 && <p className="found-hotels__not-found">Ничего не найдено</p>}
     </>
   );
 }

@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.hotel__info-container {
+  max-width: 440px;
+}
+
 .hotel__name {
   margin: 0px;
   font-weight: 300;
