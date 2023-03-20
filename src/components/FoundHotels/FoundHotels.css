@@ -1,0 +1,86 @@
+.found-hotels__info-container {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.found-hotels__info-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.found-hotels__info-title {
+  margin: 0px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.found-hotels__arrow {
+  width: 10px;
+  height: 20px;
+  background-image: url(../../images/arrow.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.found-hotels__date {
+  margin: 0px;
+  color: #41522e;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.found-hotels__photo-container {
+  max-width: 600px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 12px;
+  overflow-x: scroll;
+}
+
+.found-hotels__photo-container::-webkit-scrollbar {
+  height: 2px;
+}
+
+.found-hotels__photo {
+  width: 164px;
+  height: 149px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.found-hotels__favourites-text {
+  margin: 0px 0px 12px;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.found-hotels__favourites-count {
+  margin: 0px 4px 0px 8px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.found-hotels__hotels-container {
+  max-height: 529px;
+  overflow-y: scroll;
+}
+
+.found-hotels__hotels-container::-webkit-scrollbar {
+  width: 2px;
+  background-color: #e7e7e7;
+  border-radius: 2px;
+}
+
+.found-hotels__hotels-container::-webkit-scrollbar-thumb {
+  background: #41522e;
+  border-radius: 2px;
+}

@@ -7,7 +7,7 @@
   min-height: 906px;
   margin: 0px 184px 0px auto;
   display: grid;
-  grid-template-columns: 360px 664px;
+  grid-template-columns: 360px 644px;
   grid-template-rows: 410px 472px;
   grid-template-areas:
     "a c c"
@@ -29,5 +29,8 @@
   grid-area: b;
 }
 .hotels__grid-item:nth-child(3) {
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
   grid-area: c;
 }

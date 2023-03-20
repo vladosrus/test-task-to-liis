@@ -14,6 +14,7 @@ export default function SearchHotelsForm(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    props.onSearchHotels(values);
   }
 
   return (
@@ -25,7 +26,7 @@ export default function SearchHotelsForm(props) {
           className="search-form__input"
           type="text"
           required
-          value={values.location}
+          value={values.location || "Москва"}
           onChange={handleChange}
         />
       </div>

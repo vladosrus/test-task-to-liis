@@ -1,0 +1,113 @@
+.hotel {
+  width: 584px;
+  height: 99px;
+  border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+  position: relative;
+}
+
+.hotel__info {
+  padding-top: 19px;
+  gap: 24px;
+  display: flex;
+}
+
+.hotel__name {
+  margin: 0px;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+}
+
+.hotel__date-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.hotel__date {
+  margin: 0px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #878787;
+}
+
+.hotel__dash {
+  width: 9px;
+  height: 1px;
+  margin: 0px 10px 0px 25px;
+  background-image: url(../../images/dash.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hotel__stars-list {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  gap: 3px;
+}
+
+.hotel__star {
+  list-style: none;
+  width: 17px;
+  height: 17px;
+  background-image: url(../../images/star.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hotel__star_active {
+  background-image: url(../../images/star_active.svg);
+}
+
+.hotel__img {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(65, 82, 46, 0.05);
+  background-image: url(../../images/hotel.svg);
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.hotel__like-button {
+  width: 21px;
+  height: 18px;
+  background-image: url(../../images/like-button.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.hotel__price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.hotel__price-text {
+  margin: 0px;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+}
+.hotel__price-count {
+  margin: 0px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+}
