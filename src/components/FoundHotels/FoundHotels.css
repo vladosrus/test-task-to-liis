@@ -70,6 +70,7 @@
 }
 
 .found-hotels__hotels-list {
+  max-width: 600px;
   max-height: 529px;
   overflow-y: scroll;
   margin: 0px;

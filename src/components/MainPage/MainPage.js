@@ -15,7 +15,6 @@ export default function MainPage(props) {
     Api.getHotels(searchingLocation, searchingDate, searchingDays)
       .then((res) => {
         setHotelsToShow(res);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +28,6 @@ export default function MainPage(props) {
         setSearchingDate(date);
         setSearchingDays(days);
         setHotelsToShow(res);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);

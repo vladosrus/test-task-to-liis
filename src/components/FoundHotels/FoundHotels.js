@@ -3,18 +3,9 @@ import forest1 from "../../images/forest1.jpg";
 import forest2 from "../../images/forest2.jpg";
 import forest3 from "../../images/forest3.jpg";
 import Hotel from "../Hotel/Hotel";
-import { hotelsWrite } from "../../utils/constants";
+import { hotelsWrite, convertDate } from "../../utils/constants";
 
 export default function FoundHotels(props) {
-  const convertDate = (date) =>
-    new Date(date)
-      .toLocaleString("ru", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-      .slice(0, -3);
-
   return (
     <>
       <div className="found-hotels__info-container">
@@ -38,9 +29,9 @@ export default function FoundHotels(props) {
       <p className="found-hotels__favourites-text">
         Добавлено в Избранное:
         <span className="found-hotels__favourites-count">
-          {props.selectedHotels.length}
+          {props.favouritesHotels.length}
         </span>
-        {hotelsWrite[props.selectedHotels.length]}
+        {hotelsWrite[props.favouritesHotels.length]}
       </p>
       <ul className="found-hotels__hotels-list">
         {props.hotelsToShow?.map((newHotel) => {
@@ -50,7 +41,7 @@ export default function FoundHotels(props) {
               key={newHotel.hotelId}
             >
               <Hotel
-                setSelectedHotels={props.setSelectedHotels}
+                setFavouritesHotels={props.setFavouritesHotels}
                 hotel={newHotel}
                 hotelName={newHotel.hotelName}
                 stars={newHotel.stars}
@@ -63,7 +54,9 @@ export default function FoundHotels(props) {
           );
         })}
       </ul>
-      {props.hotelsToShow.length === 0 && <p className="found-hotels__not-found">Ничего не найдено</p>}
+      {props.hotelsToShow.length === 0 && (
+        <p className="found-hotels__not-found">Ничего не найдено</p>
+      )}
     </>
   );
 }

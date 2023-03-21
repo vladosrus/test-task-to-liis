@@ -2,9 +2,10 @@ import "./HotelsSection.css";
 import SearchHotelsForm from "../SearchHotelsForm/SearchHotelsForm";
 import FoundHotels from "../FoundHotels/FoundHotels";
 import { useState } from "react";
+import FavouritesHotels from "../FavouritesHotels/FavouritesHotels";
 
 export default function HotelsSection(props) {
-  const [selectedHotels, setSelectedHotels] = useState([]);
+  const [favouritesHotels, setFavouritesHotels] = useState([]);
 
   return (
     <section className="hotels">
@@ -12,14 +13,16 @@ export default function HotelsSection(props) {
         <div className="hotels__grid-item">
           <SearchHotelsForm onSearchHotels={props.onSearchHotels} />
         </div>
-        <div className="hotels__grid-item"></div>
+        <div className="hotels__grid-item">
+          <FavouritesHotels favouritesHotels={favouritesHotels} />
+        </div>
         <div className="hotels__grid-item">
           <FoundHotels
             searchingLocation={props.searchingLocation}
             searchingDate={props.searchingDate}
             searchingDays={props.searchingDays}
-            selectedHotels={selectedHotels}
-            setSelectedHotels={setSelectedHotels}
+            favouritesHotels={favouritesHotels}
+            setFavouritesHotels={setFavouritesHotels}
             hotelsToShow={props.hotelsToShow}
           />
         </div>

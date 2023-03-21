@@ -1,8 +1,9 @@
 .hotel {
-  width: 584px;
+  max-width: 584px;
   height: 99px;
   border-bottom: 1px solid rgba(135, 135, 135, 0.2);
   position: relative;
+  margin: 0px;
 }
 
 .hotel__info {
@@ -11,12 +12,20 @@
   display: flex;
 }
 
+.hotel__info_place_favourites {
+  padding-top: 16px;
+}
+
 .hotel__info-container {
-  max-width: 440px;
+  max-width: 75%;
 }
 
 .hotel__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin: 0px;
+  height: 22px;
   font-weight: 300;
   font-size: 17px;
   line-height: 22px;
@@ -92,13 +101,22 @@
   right: 24px;
 }
 
+.hotel__like-button_place_favourites {
+  right: 0px;
+}
+
 .hotel__price-container {
   display: flex;
   align-items: baseline;
   gap: 18px;
   position: absolute;
-  bottom: 16px;
+  bottom: 22px;
   right: 16px;
+}
+
+.hotel__price-container_place_favourites {
+  bottom: 19px;
+  right: 0px;
 }
 
 .hotel__price-text {

@@ -4,8 +4,12 @@ import "./Hotel.css";
 export default function Hotel(props) {
   return (
     <article className="hotel">
-      <div className="hotel__info">
-        <div className="hotel__img" />
+      <div
+        className={`hotel__info ${
+          props.isFavourites && "hotel__info_place_favourites"
+        }`}
+      >
+        {!props.isFavourites && <div className="hotel__img" />}
         <div className="hotel__info-container">
           <h3 className="hotel__name">{props.hotelName}</h3>
           <div className="hotel__date-container">
@@ -44,8 +48,16 @@ export default function Hotel(props) {
           </ul>
         </div>
       </div>
-      <div className="hotel__like-button" />
-      <div className="hotel__price-container">
+      <div
+        className={`hotel__like-button ${
+          props.isFavourites && "hotel__like-button_place_favourites"
+        }`}
+      />
+      <div
+        className={`hotel__price-container ${
+          props.isFavourites && "hotel__price-container_place_favourites"
+        }`}
+      >
         <p className="hotel__price-text">Price:</p>
         <span className="hotel__price-count">{props.price} ₽</span>
       </div>

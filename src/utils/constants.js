@@ -13,6 +13,14 @@ const getCheckOutDate = (checkIn, days) => {
     checkOutDate.getMonth() + 1
   }-${checkOutDate.getDate()}`;
 };
+const convertDate = (date) =>
+  new Date(date)
+    .toLocaleString("ru", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    .slice(0, -3);
 
 const hotelsWrite = [
   "отелей",
@@ -73,4 +81,5 @@ export {
   daysWrite,
   getTodayDate,
   getCheckOutDate,
+  convertDate,
 };

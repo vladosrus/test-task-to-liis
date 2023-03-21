@@ -1,0 +1,52 @@
+.favourites-hotels__title {
+  margin: 0px 0px 32px 0px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.favourites-hotels__categories-list {
+  margin: 0px;
+  margin-bottom: 32px;
+  padding: 0px;
+  display: flex;
+  gap: 8px;
+}
+
+.favourites-hotels__categories-list-item {
+  list-style: none;
+  width: 89px;
+  height: 28px;
+  outline: 1px solid #41522e;
+  border-radius: 4px;
+}
+.favourites-hotels__categories-list-item:nth-of-type(2) {
+  width: 71px;
+}
+
+.favourites-hotels__category-title {
+  margin: 4px 0px 4px 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.408px;
+}
+
+.favourites-hotels__list {
+  position: relative;
+  max-height: 288px;
+  overflow-y: scroll;
+  margin: 0px;
+  padding: 0px;
+}
+
+.favourites-hotels__list::-webkit-scrollbar {
+  width: 0px;
+  background-color: #e7e7e7;
+  border-radius: 2px;
+}
+
+.favourites-hotels__list::-webkit-scrollbar-thumb {
+  background: #41522e;
+  border-radius: 2px;
+}
