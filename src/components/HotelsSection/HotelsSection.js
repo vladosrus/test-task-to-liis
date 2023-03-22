@@ -1,23 +1,42 @@
 import "./HotelsSection.css";
 import SearchHotelsForm from "../SearchHotelsForm/SearchHotelsForm";
 import FoundHotels from "../FoundHotels/FoundHotels";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import FavouritesHotels from "../FavouritesHotels/FavouritesHotels";
+import { priceSortRules, ratingSortRules } from "../../utils/constants";
 
 export default function HotelsSection(props) {
   const [favouritesHotels, setFavouritesHotels] = useState([]);
+  const [isSelectedRatingCategory, setIsSelectedRatingCategory] =
+    useState(true);
 
-  function onHotelLikeButtonClick(hotel, isHotelLiked, setIsHotelLiked) {
-    if (!isHotelLiked) {
-      setFavouritesHotels([hotel, ...favouritesHotels]);
-      setIsHotelLiked(true);
+  const onCategoryButtonClick = (evt) => {
+    console.log(evt);
+    if (evt.target.id === "rating") {
+      const newh = [...favouritesHotels].sort(ratingSortRules);
+      setFavouritesHotels(newh);
+      setIsSelectedRatingCategory(true);
     } else {
-      setFavouritesHotels((state) =>
-        state.filter((c) => c.hotelId !== hotel.hotelId)
-      );
-      setIsHotelLiked(false);
+      const newh = [...favouritesHotels].sort(priceSortRules);
+      setFavouritesHotels(newh);
+      setIsSelectedRatingCategory(false);
     }
-  }
+  };
+
+  const onHotelLikeButtonClick = useCallback(
+    (hotel, isHotelLiked, setIsHotelLiked) => {
+      if (!isHotelLiked) {
+        setFavouritesHotels([hotel, ...favouritesHotels].sort(ratingSortRules));
+        setIsHotelLiked(true);
+      } else {
+        setFavouritesHotels((state) =>
+          state.filter((c) => c.hotelId !== hotel.hotelId)
+        );
+        setIsHotelLiked(false);
+      }
+    },
+    [favouritesHotels]
+  );
 
   return (
     <section className="hotels">
@@ -29,6 +48,8 @@ export default function HotelsSection(props) {
           <FavouritesHotels
             favouritesHotels={favouritesHotels}
             onHotelLikeButtonClick={onHotelLikeButtonClick}
+            onCategoryButtonClick={onCategoryButtonClick}
+            isSelectedRatingCategory={isSelectedRatingCategory}
           />
         </div>
         <div className="hotels__grid-item">
