@@ -1,3 +1,11 @@
+import React from "react";
+import forest1 from "../images/forest1.jpg";
+import forest2 from "../images/forest2.jpg";
+import forest3 from "../images/forest3.jpg";
+
+const PhotosContext = React.createContext();
+const photosArray = [forest1, forest2, forest3, forest1, forest2, forest3];
+
 const emailValidationErrorMessage = "Некорректный email";
 const passwordValidationErrorMessage =
   "Пароль должен содержать 8 символов без кириллицы";
@@ -95,6 +103,8 @@ export {
   siteName,
   hotelsWrite,
   daysWrite,
+  PhotosContext,
+  photosArray,
   getTodayDate,
   getCheckOutDate,
   convertDate,

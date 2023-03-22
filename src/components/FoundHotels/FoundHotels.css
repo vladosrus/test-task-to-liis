@@ -38,10 +38,16 @@
 
 .found-hotels__photo-container {
   max-width: 600px;
+  margin: 0;
+  padding: 0;
   margin-bottom: 28px;
   display: flex;
   gap: 12px;
   overflow-x: scroll;
+}
+
+.found-hotels__photo-container-item {
+  list-style: none;
 }
 
 .found-hotels__photo-container::-webkit-scrollbar {

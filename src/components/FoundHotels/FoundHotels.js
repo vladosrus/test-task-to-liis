@@ -1,11 +1,11 @@
 import "./FoundHotels.css";
-import forest1 from "../../images/forest1.jpg";
-import forest2 from "../../images/forest2.jpg";
-import forest3 from "../../images/forest3.jpg";
 import Hotel from "../Hotel/Hotel";
-import { hotelsWrite, convertDate } from "../../utils/constants";
+import { hotelsWrite, convertDate, PhotosContext } from "../../utils/constants";
+import { useContext } from "react";
 
 export default function FoundHotels(props) {
+  const photos = useContext(PhotosContext);
+
   return (
     <>
       <div className="found-hotels__info-container">
@@ -18,14 +18,15 @@ export default function FoundHotels(props) {
         </div>
         <p className="found-hotels__date">{convertDate(props.searchingDate)}</p>
       </div>
-      <div className="found-hotels__photo-container">
-        <img src={forest1} alt="Лес" className="found-hotels__photo" />
-        <img src={forest2} alt="Лес" className="found-hotels__photo" />
-        <img src={forest3} alt="Лес" className="found-hotels__photo" />
-        <img src={forest1} alt="Лес" className="found-hotels__photo" />
-        <img src={forest2} alt="Лес" className="found-hotels__photo" />
-        <img src={forest3} alt="Лес" className="found-hotels__photo" />
-      </div>
+      <ul className="found-hotels__photo-container">
+        {photos?.map((photo, index) => {
+          return (
+            <li className="found-hotels__photo-container-item" key={index}>
+              <img src={photo} alt="Лес" className="found-hotels__photo" />
+            </li>
+          );
+        })}
+      </ul>
       <p className="found-hotels__favourites-text">
         Добавлено в Избранное:
         <span className="found-hotels__favourites-count">
