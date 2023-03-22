@@ -41,14 +41,15 @@ export default function FoundHotels(props) {
               key={newHotel.hotelId}
             >
               <Hotel
-                setFavouritesHotels={props.setFavouritesHotels}
+                isFavourites={false}
+                onHotelLikeButtonClick={props.onHotelLikeButtonClick}
+                favouritesHotels={props.favouritesHotels}
                 hotel={newHotel}
                 hotelName={newHotel.hotelName}
                 stars={newHotel.stars}
                 price={newHotel.priceAvg}
                 date={convertDate(props.searchingDate)}
                 days={props.searchingDays}
-                onHotelLike={props.onHotelLike}
               />
             </li>
           );

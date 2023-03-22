@@ -24,14 +24,14 @@ export default function FavouritesHotels(props) {
             >
               <Hotel
                 isFavourites={true}
-                setSelectedHotels={props.setSelectedHotels}
                 hotel={newHotel}
                 hotelName={newHotel.hotelName}
                 stars={newHotel.stars}
                 price={newHotel.priceAvg}
                 date={convertDate(props.searchingDate)}
                 days={props.searchingDays}
-                onHotelLike={props.onHotelLike}
+                onHotelLikeButtonClick={props.onHotelLikeButtonClick}
+                favouritesHotels={props.favouritesHotels}
               />
             </li>
           );
