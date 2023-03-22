@@ -9,7 +9,7 @@ function checkResponse(res) {
 }
 export function getHotels(location, date, days) {
   return fetch(
-    `http://engine.hotellook.com/api/v2/cache.json?location=${location}&checkIn=${date}&checkOut=${getCheckOutDate(date, Number(days))}&adults=1&currency=rub&limit=10`,
+    `https://engine.hotellook.com/api/v2/cache.json?location=${location}&checkIn=${date}&checkOut=${getCheckOutDate(date, Number(days))}&adults=1&currency=rub&limit=10`,
     {
       method: "GET",
     }
