@@ -68,8 +68,8 @@ export default function FavouritesHotels(props) {
                 hotelName={newHotel.hotelName}
                 stars={newHotel.stars}
                 price={newHotel.priceAvg}
-                date={convertDate(props.searchingDate)}
-                days={props.searchingDays}
+                date={newHotel.date}
+                days={newHotel.days}
                 onHotelLikeButtonClick={props.onHotelLikeButtonClick}
                 favouritesHotels={props.favouritesHotels}
               />

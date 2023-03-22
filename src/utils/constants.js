@@ -26,7 +26,7 @@ function getCheckOutDate(checkIn, days) {
 }
 
 function convertDate(date) {
-  new Date(date)
+  return new Date(date)
     .toLocaleString("ru", {
       year: "numeric",
       month: "long",

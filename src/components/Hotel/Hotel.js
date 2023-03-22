@@ -15,6 +15,8 @@ export default function Hotel(props) {
 
   const handleLikeButtonClick = useCallback(() => {
     const { onHotelLikeButtonClick, hotel } = props;
+    hotel.date = props.date;
+    hotel.days = props.days;
     onHotelLikeButtonClick(hotel, isHotelLiked, setIsHotelLiked);
   }, [isHotelLiked, props]);
 
