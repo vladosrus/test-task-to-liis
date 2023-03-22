@@ -11,7 +11,6 @@ export default function HotelsSection(props) {
     useState(true);
 
   const onCategoryButtonClick = (evt) => {
-    console.log(evt);
     if (evt.target.id === "rating") {
       const newh = [...favouritesHotels].sort(ratingSortRules);
       setFavouritesHotels(newh);
