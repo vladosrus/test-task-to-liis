@@ -37,7 +37,7 @@ export default function AuthPage(props) {
                 }`}
                 type="email"
                 required
-                pattern="^[a-z0-9-_.]+?@[a-z]+\.[a-z]+"
+                pattern=".+@.+\..+"
                 value={values.email || ""}
                 onChange={handleChange}
               />
@@ -64,7 +64,7 @@ export default function AuthPage(props) {
                 }`}
                 type="password"
                 required
-                pattern="^(?!.*[А-Яа-я]).{8,50}"
+                pattern="^(?!.*[А-Я а-я]).{8,50}"
                 value={values.password || ""}
                 onChange={handleChange}
               />
