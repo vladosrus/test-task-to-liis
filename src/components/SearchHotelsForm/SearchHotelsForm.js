@@ -31,13 +31,14 @@ export default function SearchHotelsForm(props) {
       <div className="search-form__input-container">
         <h3 className="search-form__input-title">Дата заселения</h3>
         <input
+          type="date"
           name="date"
           className="search-form__input"
-          type="date"
           required
           value={values.date}
           defaultValue={getTodayDate()}
           onChange={handleChange}
+          min={getTodayDate()}
         />
       </div>
       <div className="search-form__input-container">

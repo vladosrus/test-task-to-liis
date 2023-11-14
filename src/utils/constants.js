@@ -11,18 +11,22 @@ const passwordValidationErrorMessage =
   "Пароль должен содержать 8 символов без кириллицы";
 const siteName = "Simple Hotel Check";
 
+function returnTrueDate(date) {
+  if (date.getMonth() + 1 > 9) {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  } else {
+    return `${date.getFullYear()}-0${date.getMonth() + 1}-${date.getDate()}`;
+  }
+}
+
 function getTodayDate() {
-  return `${new Date().getFullYear()}-0${
-    new Date().getMonth() + 1
-  }-${new Date().getDate()}`;
+  return returnTrueDate(new Date());
 }
 
 function getCheckOutDate(checkIn, days) {
   const checkOutDate = new Date(checkIn);
   checkOutDate.setDate(checkOutDate.getDate() + days);
-  return `${checkOutDate.getFullYear()}-0${
-    checkOutDate.getMonth() + 1
-  }-${checkOutDate.getDate()}`;
+  return returnTrueDate(checkOutDate);
 }
 
 function convertDate(date) {
