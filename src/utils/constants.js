@@ -12,11 +12,16 @@ const passwordValidationErrorMessage =
 const siteName = "Simple Hotel Check";
 
 function returnTrueDate(date) {
-  if (date.getMonth() + 1 > 9) {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  } else {
-    return `${date.getFullYear()}-0${date.getMonth() + 1}-${date.getDate()}`;
-  }
+  let res;
+
+  date.getMonth() + 1 > 9
+    ? (res = `${date.getFullYear()}-${date.getMonth() + 1}`)
+    : (res = `${date.getFullYear()}-0${date.getMonth() + 1}`);
+  date.getDate() > 9
+    ? (res += `-${date.getDate()}`)
+    : (res += `-0${date.getDate()}`);
+
+  return res;
 }
 
 function getTodayDate() {
