@@ -66,8 +66,6 @@ const hotelsWrite = [
   "отелей",
   "отелей",
   "отелей",
-  "отель",
-  "отеля",
 ];
 const daysWrite = [
   "дней",
@@ -91,8 +89,6 @@ const daysWrite = [
   "дней",
   "дней",
   "дней",
-  "день",
-  "дня",
 ];
 
 function ratingSortRules(a, b) {

@@ -32,7 +32,7 @@ export default function FoundHotels(props) {
         <span className="found-hotels__favourites-count">
           {props.favouritesHotels.length}
         </span>
-        {hotelsWrite[props.favouritesHotels.length]}
+        {hotelsWrite[props.favouritesHotels.length % 20]}
       </p>
       <ul className="found-hotels__hotels-list">
         {props.hotelsToShow?.map((newHotel) => {

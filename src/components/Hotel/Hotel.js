@@ -55,7 +55,7 @@ export default function Hotel(props) {
             <p className="hotel__date">{props.date}</p>
             <div className="hotel__dash" />
             <p className="hotel__date">
-              {props.days} {daysWrite[props.days]}
+              {props.days} {daysWrite[props.days % 20]}
             </p>
           </div>
           <ul className="hotel__stars-list">
