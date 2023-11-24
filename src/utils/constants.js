@@ -65,7 +65,6 @@ const hotelsWrite = [
   "отелей",
   "отелей",
   "отелей",
-  "отелей",
 ];
 const daysWrite = [
   "дней",
@@ -88,8 +87,10 @@ const daysWrite = [
   "дней",
   "дней",
   "дней",
-  "дней",
 ];
+
+const returnNumberInArray = (num) =>
+  num > 19 ? returnNumberInArray(num - 10) : num > 9 ? num - 10 : num;
 
 function ratingSortRules(a, b) {
   if (a.stars < b.stars) return 1;
@@ -115,4 +116,5 @@ export {
   convertDate,
   ratingSortRules,
   priceSortRules,
+  returnNumberInArray,
 };

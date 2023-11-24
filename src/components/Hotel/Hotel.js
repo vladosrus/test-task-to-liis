@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { daysWrite } from "../../utils/constants";
+import { daysWrite, returnNumberInArray } from "../../utils/constants";
 import "./Hotel.css";
 
 export default function Hotel(props) {
@@ -55,7 +55,7 @@ export default function Hotel(props) {
             <p className="hotel__date">{props.date}</p>
             <div className="hotel__dash" />
             <p className="hotel__date">
-              {props.days} {daysWrite[props.days % 20]}
+              {props.days} {daysWrite[returnNumberInArray(props.days)]}
             </p>
           </div>
           <ul className="hotel__stars-list">

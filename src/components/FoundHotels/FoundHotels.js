@@ -1,6 +1,11 @@
 import "./FoundHotels.css";
 import Hotel from "../Hotel/Hotel";
-import { hotelsWrite, convertDate, PhotosContext } from "../../utils/constants";
+import {
+  hotelsWrite,
+  returnNumberInArray,
+  convertDate,
+  PhotosContext,
+} from "../../utils/constants";
 import { useContext } from "react";
 
 export default function FoundHotels(props) {
@@ -32,7 +37,7 @@ export default function FoundHotels(props) {
         <span className="found-hotels__favourites-count">
           {props.favouritesHotels.length}
         </span>
-        {hotelsWrite[props.favouritesHotels.length % 20]}
+        {hotelsWrite[returnNumberInArray(props.favouritesHotels.length)]}
       </p>
       <ul className="found-hotels__hotels-list">
         {props.hotelsToShow?.map((newHotel) => {
