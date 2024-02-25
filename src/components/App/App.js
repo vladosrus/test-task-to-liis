@@ -19,7 +19,7 @@ export default function App() {
   function authorization() {
     localStorage.setItem("isLogin", "true");
     setIsLogin(true);
-    history.push("/hotels");
+    history.push("/test-task-to-liis/hotels");
   }
 
   function logout() {
