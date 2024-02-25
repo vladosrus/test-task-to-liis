@@ -1,0 +1,70 @@
+name: CI/CD Actions
+run-name: CI/CD Actions in work
+
+on: # запускать процессы при push и pull_request в ветку main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  CI: # здесь буду выполняться проверки линтерами и тесты
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['21.x']
+    steps:
+      - name: Проверяем код репозитория
+        uses: actions/checkout@v4
+
+      - name: Настраиваем Node.js версии ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Устанавливаем зависимости
+        run: npm ci
+
+      - name: Создаём build
+        run: npm run build
+
+      # Проверки кодстайла
+      - name: Проверка Eslint
+        run: npm run lint
+
+      # Тесты
+
+  CD: # эта часть отвечает за развёртывание приложения
+    name: Continuous Deployment
+    needs: CI
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['21.x']
+    steps:
+      - name: Проверяем код репозитория
+        uses: actions/checkout@v4
+
+      - name: Настраиваем Node.js версии ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Устанавливаем SSH ключи
+        run: |
+          set -eu
+          mkdir "$HOME/.ssh"
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" >> "$HOME/.ssh/id_rsa"
+          chmod 600 "$HOME/.ssh/id_rsa"
+
+      - name: Устанавливаем зависимости
+        run: npm ci
+
+      - name: Создаём build и отправляем его на сервер
+        run: |
+          npm run build
+          scp -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ${{ secrets.DEPLOY_SERVER_INFO }}

@@ -1,3 +1,5 @@
+![CI/CD Actions](https://github.com/vladosrus/test-task-to-liis/actions/workflows/actions.yml/badge.svg?event=push)
+
 # Тестовое задание для компании ЛИИС
 
 ### Описание проекта
@@ -12,4 +14,4 @@
 
 * Ссылка на макет в Figma [тут](https://www.figma.com/file/PxI4ycD6GMGSpxOZ2NbFBO/React-Test%2FSimple-Hotel-Check-(Copy)?node-id=0%3A1)
 * Ссылка на документацию API, используемой в проекте [https://...](https://support.travelpayouts.com/hc/ru/articles/115000343268-API-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%BE%D1%82%D0%B5%D0%BB%D0%B5%D0%B9#price)
-* Посмотреть мою реализацию проекта можно [здесь](https://test-task-to-liis.vercel.app)
+* Посмотреть мою реализацию проекта можно [здесь](https://vladislav-chikov-projects.ru/test-task-to-liis/)
