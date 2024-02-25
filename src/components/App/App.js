@@ -31,25 +31,25 @@ export default function App() {
     <PhotosContext.Provider value={photosArray}>
       <div className="page">
         <Switch>
-          <Route exact path="/sign-in">
+          <Route exact path="/test-task-to-liis/sign-in">
             {isLogin ? (
-              <Redirect to="/hotels" />
+              <Redirect to="/test-task-to-liis/hotels" />
             ) : (
               <AuthPage onLogin={authorization} />
             )}
           </Route>
           <ProtectedRoute
             exact
-            path="/hotels"
+            path="/test-task-to-liis/hotels"
             component={MainPage}
             loggedIn={isLogin}
             onLogout={logout}
           />
           <ProtectedRoute
-            path="/"
+            path="/test-task-to-liis/"
             component={Redirect}
             loggedIn={isLogin}
-            to="/hotels"
+            to="/test-task-to-liis/hotels"
           />
         </Switch>
       </div>
