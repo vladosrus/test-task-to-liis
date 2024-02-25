@@ -1,8 +1,6 @@
 import Hotel from "../Hotel/Hotel";
 import "./FavouritesHotels.css";
 
-import { convertDate } from "../../utils/constants";
-
 export default function FavouritesHotels(props) {
   const ratingCategoryItemClassList = `favourites-hotels__categories-list-item ${
     props.isSelectedRatingCategory &&
