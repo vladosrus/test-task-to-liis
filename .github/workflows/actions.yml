@@ -9,19 +9,22 @@ on: # запускать процессы при push и pull_request в вет�
     branches:
       - main
 
+env:
+  CI: 'false'
+
 jobs:
   CI: # здесь буду выполняться проверки линтерами и тесты
     name: Continuous Integration
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['21.x']
+        node-version: ['22.x']
     steps:
       - name: Проверяем код репозитория
         uses: actions/checkout@v4
 
       - name: Настраиваем Node.js версии ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -42,29 +45,32 @@ jobs:
     needs: CI
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['21.x']
+    concurrency:
+      group: deploy
+      cancel-in-progress: false
     steps:
       - name: Проверяем код репозитория
         uses: actions/checkout@v4
 
-      - name: Настраиваем Node.js версии ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Устанавливаем SSH ключи
-        run: |
-          set -eu
-          mkdir "$HOME/.ssh"
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" >> "$HOME/.ssh/id_rsa"
-          chmod 600 "$HOME/.ssh/id_rsa"
+          node-version: '22'
 
       - name: Устанавливаем зависимости
         run: npm ci
 
-      - name: Создаём build и отправляем его на сервер
+      - name: Собираем проект
+        run: npx react-scripts build
+        env:
+          GENERATE_SOURCEMAP: 'false'
+
+      - name: Отправляем результат на сервер
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
         run: |
-          npm run build
-          scp -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ${{ secrets.DEPLOY_SERVER_INFO }}
+          set -euo pipefail
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_SSH_KEY" > "$HOME/.ssh/deploy_key"
+          chmod 600 "$HOME/.ssh/deploy_key"
+          echo "45.135.233.126 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL2/ITDGVDpKjQN/S2k/qXVcZdoUm7X4QBfbPAwbydFG" > "$HOME/.ssh/known_hosts"
+          tar -czf - -C build . | ssh -T -i "$HOME/.ssh/deploy_key" -o BatchMode=yes deployer@45.135.233.126
