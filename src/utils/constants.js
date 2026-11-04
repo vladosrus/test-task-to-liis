@@ -4,7 +4,7 @@ import forest2 from "../images/forest2.jpg";
 import forest3 from "../images/forest3.jpg";
 
 const PhotosContext = React.createContext();
-const photosArray = [forest1, forest2, forest3, forest1, forest2, forest3];
+const photosArray = [forest1, forest2, forest3, forest1];
 
 const emailValidationErrorMessage = "Некорректный email";
 const passwordValidationErrorMessage =

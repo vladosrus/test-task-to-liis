@@ -1,5 +1,3 @@
-![CI/CD Actions](https://github.com/vladosrus/test-task-to-liis/actions/workflows/actions.yml/badge.svg?event=push)
-
 # Тестовое задание для компании ЛИИС
 
 ### Описание проекта
